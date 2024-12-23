@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Divine Eyes{% endblock %}
+
+{% block content %}
+    <div class="px-4 my-5 text-center border-bottom" id="hero">
+        <h1 class="display-5 fw-bold text-body-emphasis">Practical Wisdom for Daily Life</h1>
+        <div class="col-lg-8 mx-auto">
+            <p class="lead mt-4">
+                The Vachanamrut, Lord Swaminarayan's divine teachings, offers practical wisdom for everyday challenges.
+                It guides us on handling stress, relationships, and personal growth with clarity and peace. These
+                timeless teachings help balance spiritual and worldly life, offering solutions for living a harmonious
+                and purposeful life.
+            </p>
+            <div class="d-flex justify-content-center my-4">
+                <a class="Btn instagram text-decoration-none text-light" target="_blank"
+                   href="https://www.instagram.com/divine.eyes.hindu/">
+                    {# <span class="line-md--instagram-lg icon"></span> #}
+                    <iconify-icon icon="line-md:instagram" width="30" height="30"
+                                  class="text-light icon"></iconify-icon>
+
+                    <span class="text">Instagram</span>
+                </a>
+
+                <a class="Btn youtube text-decoration-none text-light" target="_blank"
+                   href="https://www.youtube.com/@DivineEyesHindu">
+                    {# <span class="line-md--youtube-filled-lg icon"></span> #}
+                    <iconify-icon icon="line-md:youtube-filled" width="30" height="30"
+                                  class="text-light icon"></iconify-icon>
+                    <span class="text">YouTube</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="overflow-hidden" style="max-height: 80vh;">
+            <div class="container position-relative" id="main-banner-img">
+                <picture>
+                    <source srcset="../static/images/hero_mobile_cut.png" class="image-fluid"
+                            media="(max-width: 600px)">
+                    <img src="../static/images/hero_default.png" class="img-fluid"
+                         alt="Desktop Screenshot of the Instagram Page of Divine Eyes Channel">
+                </picture>
+            </div>
+        </div>
+    </div>
+{% endblock %}

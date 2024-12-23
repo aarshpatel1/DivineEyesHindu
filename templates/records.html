@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Records of User - Divine Eyes Hindu{% endblock %}
+
+{% block content %}
+    {% if users_exist %}
+        <header class="py-3 mb-4 border-bottom">
+            <div class="container d-flex flex-wrap justify-content-center">
+                <a href="javascript:void(0)"
+                   class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                    <span class="fs-4 fw-bold">User Records</span>
+                </a>
+                <div class="d-flex">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+                        <input type="text" id="searchInput" class="form-control shadow-none border-2 border-light"
+                               onkeyup="searchTable()"
+                               placeholder="Search for users..." autofocus>
+                    </form>
+                    <a href="{{ url_for('sign_up') }}" class="btn btn-outline-light ms-2">Add User</a>
+                </div>
+            </div>
+        </header>
+    {% endif %}
+
+    <div class="container vh-100">
+        {% if not users_exist %}
+            <div class="d-flex align-items-center vh-100 justify-content-center text-center">
+                <h1>
+                    There is no user exist...!
+                    <br>
+                    <a href="{{ url_for('sign_up') }}" class="fs-5">Register a new User</a>
+                </h1>
+            </div>
+        {% else %}
+            <table id="dataTable" class="table table-hover">
+            <thead>
+            <tr class="table-active">
+                <th scope="col">#</th>
+                {#            <th scope="col">Username</th>#}
+                <th scope="col">Email ID</th>
+                <th scope="col">Passwords</th>
+                <th scope="col">Delete Record</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    {#                <td>{{ user.name }}</td>#}
+                    <td class="email">{{ user.email }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>
+                        <a href="{{ url_for('delete', record_id=user.id) }}">
+                            <iconify-icon icon="fluent:delete-24-filled" width="24" height="24"
+                                          style="color:rgb(220, 53, 69)"></iconify-icon>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+        </table>
+    </div>
+
+
+    <!-- alert messages start -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="position-fixed bottom-0 end-0 z-3 me-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <!-- alert messages end -->
+
+
+    {% block custom_js %}
+        <script>
+            function searchTable() {
+                // Get the search input value
+                let input = document.getElementById("searchInput").value.toUpperCase();
+
+                // Get the table and its rows
+                let table = document.getElementById("dataTable");
+                let tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows (except the first, which contains the headers)
+                for (let i = 1; i < tr.length; i++) {
+                    let td = tr[i].getElementsByTagName("td");
+                    let rowContainsQuery = false;
+
+                    // Loop through each cell in the row
+                    for (let j = 0; j < td.length; j++) {
+                        if (td[j]) {
+                            let cellText = td[j].textContent || td[j].innerText;
+                            if (cellText.toUpperCase().indexOf(input) > -1) {
+                                rowContainsQuery = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Show the row if it contains the search query, otherwise hide it
+                    tr[i].style.display = rowContainsQuery ? "" : "none";
+                }
+            }</script>
+    {% endblock %}
+{% endblock %}

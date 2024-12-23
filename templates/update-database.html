@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel - Divine Eyes Hindu{% endblock %}
+
+{% block content %}
+    <main id="login-signup" class="d-flex justify-content-center align-items-center">
+        <form action="/update-database" method="post">
+            <input type="submit"
+                   class="btn btn-lg btn-primary bg-secondary border-0 fw-semibold text-capitalize shadow-none"
+                   value="Update the Database">
+        </form>
+
+        <!-- alert messages start -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="position-fixed bottom-0 end-0 z-3 me-3">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- alert messages end -->
+
+    </main>
+{% endblock %}

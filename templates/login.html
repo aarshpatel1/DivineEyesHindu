@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <main class="d-flex align-items-center bg-primary no-select" id="login-signup">
+        <div class="container col-xl-10 col-xxl-8">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-lg-7 d-none d-lg-block text-center text-lg-start">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        {# <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each#}
+                        {#     required form group has a validation state that can be triggered by attempting to submit the form#}
+                        {#     without completing it.</p>#}
+                        <img src="../static/images/logo.jpg" alt="Logo of Divine Eyes" width="400"
+                             class="rounded-circle">
+                    </div>
+                </div>
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <!-- login form start -->
+                    <form class="p-4 p-md-5 border rounded-3 bg-primary no-select" method="post">
+                        <h2 class="fs-2 fw-bold lh-1 text-body-emphasis mb-4 text-center">Login</h2>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class="text-secondary">{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email"
+                                   placeholder="name@example.com">
+                            <label for="email">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                        {# <div class="checkbox mb-3">#}
+                        {#     <label>#}
+                        {#         <input type="checkbox" value="remember-me"> Remember me#}
+                        {#     </label>#}
+                        {# </div>#}
+                        <button class="w-100 btn btn-lg btn-primary bg-secondary border-0 fw-semibold text-capitalize shadow-none" type="submit">
+                            Login
+                        </button>
+                        <hr class="my-4">
+                        <p class="text-center m-0">
+                            <small class="text-body-secondary">If you have not signed up then visit
+                                <a href="/sign-up">Sign up</a>
+                            </small>
+                        </p>
+                    </form>
+                    <!-- login form end -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!-- header start -->
+<header class="header border-bottom border-secondary-subtle bg-blur">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="../static/images/logo.jpg" alt="logo" width="50"
+                     class="d-inline-block align-text-top rounded-circle">
+                <span class="ms-2">Divine Eyes</span>
+            </a>
+            <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/content">Our Videos</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/records">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/update-database">Update Database</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/logout">Logout</a>
+                        </li>
+                    {% endif %}
+                    {# <li class="nav-item dropdown">#}
+                    {#     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+                    {#        aria-expanded="false">#}
+                    {#         Categories#}
+                    {#     </a>#}
+                    {#     <ul class="dropdown-menu">#}
+                    {#         <li><a class="dropdown-item" href="/content">All</a></li>#}
+                    {#         <li><a class="dropdown-item" href="#">Another action</a></li>#}
+                    {#         <li>#}
+                    {#             <hr class="dropdown-divider">#}
+                    {#         </li>#}
+                    {#         <li><a class="dropdown-item" href="#">Something else here</a></li>#}
+                    {#     </ul>#}
+                    {# </li>#}
+                    {# <li class="nav-item"> #}
+                    {#     <a class="nav-link" href="#">About Us</a> #}
+                    {# </li> #}
+                    {# <li class="nav-item"> #}
+                    {#     <a class="nav-link" href="#">Contact Us</a> #}
+                    {# </li> #}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- header end -->
